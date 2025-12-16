@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA AI gemini-2.5-flash Malagasy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <style>
+        :root {
+            --space-black: #0B0B15;
+            --deep-space: #121225;
+            --cosmic-blue: #1A1A2E;
+            --stardust: #16213E;
+            --nebula-purple: #6D28D9;
+            --supernova: #8B5CF6;
+            --quantum-teal: #06D6A0;
+            --plasma-pink: #EF476F;
+            --galaxy-gold: #FFD166;
+            --light-speed: #118AB2;
+            
+            --text-starlight: #F8FAFC;
+            --text-moonlight: #E2E8F0;
+            --text-dust: #94A3B8;
+            --text-nebula: #CBD5E1;
+            
+            --gradient-primary: linear-gradient(135deg, var(--nebula-purple), var(--supernova));
+            --gradient-secondary: linear-gradient(135deg, var(--quantum-teal), var(--light-speed));
+            --gradient-warning: linear-gradient(135deg, var(--plasma-pink), #FF6B6B);
+            --gradient-space: linear-gradient(135deg, var(--space-black), var(--cosmic-blue));
+            
+            --shadow-nebula: 0 8px 32px rgba(109, 40, 217, 0.25);
+            --shadow-stardust: 0 4px 24px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.3);
+            --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.5);
+            
+            --border-stellar: 1px solid rgba(255, 255, 255, 0.1);
+            --border-nebula: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--space-black);
+            color: var(--text-starlight);
+            height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(109, 40, 217, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(6, 214, 160, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(27, 27, 46, 0.8) 0%, transparent 50%);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            border: 2px solid var(--space-black);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--supernova);
+        }
+        
+        .nova-container {
+            display: flex;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cosmic-sidebar {
+            width: 320px;
+            background: rgba(18, 18, 37, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: var(--border-stellar);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 100;
+            box-shadow: var(--shadow-deep);
+        }
+        
+        .sidebar-header {
+            padding: 32px 28px;
+            border-bottom: var(--border-stellar);
+            background: rgba(26, 26, 46, 0.5);
+        }
+        
+        .nova-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .logo-orb {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: var(--shadow-nebula);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-orb::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .nova-title {
+            font-size: 24px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        
+        .nova-subtitle {
+            font-size: 13px;
+            color: var(--text-dust);
+            font-weight: 500;
+            margin-left: 68px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--quantum-teal);
+            border-radius: 50%;
+            animation: statusPulse 2s infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .quantum-button {
+            width: 100%;
+            padding: 18px 24px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-nebula);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quantum-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .quantum-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(109, 40, 217, 0.4);
+        }
+        
+        .quantum-button:hover::before {
+            left: 100%;
+        }
+        
+        .quantum-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .star-history {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        
+        .history-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dust);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .star-chat {
+            padding: 18px 20px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: var(--border-stellar);
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+        }
+        
+        .star-chat:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--border-nebula);
+            transform: translateX(5px);
+        }
+        
+        .star-chat.active {
+            background: rgba(139, 92, 246, 0.15);
+            border-color: var(--border-nebula);
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .star-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .star-text {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .star-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .star-preview {
+            font-size: 12px;
+            color: var(--text-dust);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .star-type {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .cosmic-profile {
+            padding: 24px;
+            border-top: var(--border-stellar);
+            background: rgba(26, 26, 46, 0.5);
+        }
+        
+        .profile-orb {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: var(--border-stellar);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .profile-orb:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--border-nebula);
+        }
+        
+        .profile-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: var(--gradient-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .profile-name {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        
+        .profile-status {
+            font-size: 12px;
+            color: var(--quantum-teal);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .quantum-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .neural-header {
+            padding: 24px 40px;
+            border-bottom: var(--border-stellar);
+            background: rgba(18, 18, 37, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 50;
+        }
+        
+        .current-chat {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .chat-title {
+            font-size: 20px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .chat-model {
+            font-size: 13px;
+            padding: 8px 16px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 20px;
+            color: var(--supernova);
+            border: var(--border-nebula);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quantum-switch {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px;
+            border-radius: 16px;
+            border: var(--border-stellar);
+        }
+        
+        .mode-quantum {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            background: transparent;
+            color: var(--text-dust);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .mode-quantum:hover {
+            color: var(--text-moonlight);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .mode-quantum.active {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .galaxy-chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: rgba(11, 11, 21, 0.7);
+            position: relative;
+        }
+        
+        .welcome-nebula {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            animation: nebulaFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .welcome-title {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--supernova), var(--quantum-teal), var(--plasma-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.2em;
+            color: var(--text-moonlight);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .constellation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .star-capability {
+            background: rgba(26, 26, 46, 0.7);
+            border: var(--border-stellar);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .star-capability:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-nebula);
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .capability-orb {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: var(--gradient-primary);
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .capability-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-starlight);
+        }
+        
+        .capability-desc {
+            font-size: 14px;
+            color: var(--text-nebula);
+            line-height: 1.5;
+        }
+        
+        .quantum-message {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            display: flex;
+            gap: 24px;
+            animation: quantumAppear 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+        
+        @keyframes quantumAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .message-orb {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-stardust);
+            position: relative;
+        }
+        
+        .message-orb::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 20px;
+            background: var(--gradient-primary);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .quantum-message:hover .message-orb::after {
+            opacity: 1;
+        }
+        
+        .message-bubble {
+            flex: 1;
+            min-width: 0;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 24px;
+            padding: 32px;
+            border: var(--border-stellar);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-stardust);
+            transition: all 0.3s;
+        }
+        
+        .quantum-message:hover .message-bubble {
+            border-color: var(--border-nebula);
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .message-sender {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .message-time {
+            font-size: 13px;
+            color: var(--text-dust);
+        }
+        
+        .message-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-moonlight);
+        }
+        
+        .stellar-image {
+            margin-top: 24px;
+            position: relative;
+        }
+        
+        .image-frame {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-deep);
+            border: var(--border-nebula);
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .stellar-preview {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .image-frame:hover .stellar-preview {
+            transform: scale(1.02);
+        }
+        
+        .image-halo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(139, 92, 246, 0.1) 70%);
+            pointer-events: none;
+        }
+        
+        .quantum-controls {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .control-orb {
+            padding: 14px 24px;
+            border-radius: 14px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .control-download {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .control-regenerate {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-moonlight);
+            border: var(--border-stellar);
+        }
+        
+        .control-enhance {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+        
+        .control-orb:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-nebula);
+        }
+        
+        .quantum-input {
+            padding: 32px 40px;
+            border-top: var(--border-stellar);
+            background: rgba(18, 18, 37, 0.95);
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 50;
+        }
+        
+        .input-warp {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .warp-field {
+            width: 100%;
+            padding: 24px 160px 24px 32px;
+            background: rgba(26, 26, 46, 0.7);
+            border: var(--border-stellar);
+            border-radius: 20px;
+            color: var(--text-starlight);
+            font-size: 16px;
+            line-height: 1.6;
+            resize: none;
+            min-height: 70px;
+            max-height: 200px;
+            outline: none;
+            font-family: inherit;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-stardust);
+        }
+        
+        .warp-field:focus {
+            border-color: var(--border-nebula);
+            box-shadow: var(--shadow-glow);
+            background: rgba(26, 26, 46, 0.9);
+        }
+        
+        .warp-controls {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .warp-button {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .warp-send {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .warp-image {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+        
+        .warp-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .warp-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .size-quantum {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: var(--border-stellar);
+            max-width: fit-content;
+        }
+        
+        .size-option {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: var(--border-stellar);
+            border-radius: 12px;
+            color: var(--text-dust);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .size-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-moonlight);
+        }
+        
+        .size-option.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .auto-pulse {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 16px;
+            margin-top: 16px;
+            max-width: fit-content;
+            border: var(--border-nebula);
+            animation: pulseBorder 2s infinite;
+        }
+        
+        @keyframes pulseBorder {
+            0%, 100% { border-color: rgba(139, 92, 246, 0.3); }
+            50% { border-color: rgba(139, 92, 246, 0.6); }
+        }
+        
+        @media (max-width: 1200px) {
+            .cosmic-sidebar {
+                width: 280px;
+            }
+            
+            .welcome-title {
+                font-size: 2.8em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cosmic-sidebar {
+                position: fixed;
+                left: -320px;
+                top: 0;
+                bottom: 0;
+                z-index: 1000;
+                transition: left 0.3s;
+            }
+            
+            .cosmic-sidebar.active {
+                left: 0;
+            }
+            
+            .quantum-main {
+                width: 100%;
+            }
+            
+            .warp-controls {
+                position: static;
+                margin-top: 16px;
+                justify-content: center;
+            }
+            
+            .warp-field {
+                padding-right: 32px;
+            }
+            
+            .quantum-message {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .message-orb {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nova-container">
+        <div class="cosmic-sidebar" id="cosmicSidebar">
+            <div class="sidebar-header">
+                <div class="nova-logo">
+                    <div class="logo-orb">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="nova-title">NOVA AI</div>
+                </div>
+                <div class="nova-subtitle">
+                    <span class="status-pulse"></span>
+                  gemini-2.5-flash • Malagasy
+                </div>
+                
+                <button class="quantum-button" id="newChatBtn">
+                    <i class="fas fa-plus-circle"></i>
+                    Quantum Chat
+                </button>
+            </div>
+            
+            <div class="star-history" id="starHistory">
+                <div class="history-title">
+                    <i class="fas fa-history"></i>
+                    Time Stream
+                </div>
+                
+                <div class="star-chat active">
+                    <div class="star-icon" style="background: var(--gradient-primary);">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="star-text">
+                        <div class="star-title">Welcome to NOVA</div>
+                        <div class="star-preview">Quantum AI Interface</div>
+                    </div>
+                    <div class="star-type">TEXT</div>
+                </div>
+                
+                <div class="star-chat">
+                    <div class="star-icon" style="background: var(--gradient-secondary);">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="star-text">
+                        <div class="star-title">Stellar Creation</div>
+                        <div class="star-preview">Image generation demo</div>
+                    </div>
+                    <div class="star-type">IMAGE</div>
+                </div>
+            </div>
+            
+            <div class="cosmic-profile">
+                <div class="profile-orb" id="userProfile">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">Quantum User</div>
+                        <div class="profile-status">
+                            <i class="fas fa-satellite"></i>
+                            Connected to Gemini
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quantum-main">
+            <div class="neural-header">
+                <div class="current-chat">
+                    <div class="chat-title">NOVA Quantum Interface</div>
+                    <div class="chat-model">
+                        <i class="fas fa-bolt"></i>
+                       gemini-2.5-flash
+                    </div>
+                </div>
+                
+                <div class="quantum-switch">
+                    <button class="mode-quantum active" data-mode="text">
+                        <i class="fas fa-font"></i>
+                        Quantum Text
+                    </button>
+                    <button class="mode-quantum" data-mode="image">
+                        <i class="fas fa-palette"></i>
+                        Stellar Images
+                    </button>
+                </div>
+            </div>
+            
+            <div class="galaxy-chat" id="galaxyChat">
+                <div class="welcome-nebula">
+                    <h1 class="welcome-title">NOVA AI</h1>
+                    <p class="welcome-subtitle">
+                        Quantum AI Interface powered by gemini-2.5-flash.
+                        Multimodal intelligence for text, images, and cosmic creation.
+                    </p>
+                    
+                    <div class="constellation-grid">
+                        <div class="star-capability">
+                            <div class="capability-orb">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="capability-title">Quantum Dialogue</div>
+                            <div class="capability-desc">
+                                Advanced conversation in Malagasy, French, and 40+ languages with contextual understanding.
+                            </div>
+                        </div>
+                        
+                        <div class="star-capability">
+                            <div class="capability-orb">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="capability-title">Stellar Creation</div>
+                            <div class="capability-desc">
+                                Generate cosmic images from descriptions, modify visuals, and explore creative possibilities.
+                            </div>
+                        </div>
+                        
+                        <div class="star-capability">
+                            <div class="capability-orb">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="capability-title">Neural Coding</div>
+                            <div class="capability-desc">
+                                Write, debug, and explain code in any programming language with quantum precision.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quantum-message">
+                    <div class="message-orb" style="background: var(--gradient-primary);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-bubble">
+                        <div class="message-header">
+                            <div class="message-sender">
+                                <i class="fas fa-robot"></i>
+                                NOVA AI
+                            </div>
+                            <div class="message-time">Just now</div>
+                        </div>
+                        <div class="message-content">
+                            <p><strong>🚀 Welcome to the Quantum Interface!</strong></p>
+                            <p>I am NOVA, powered by Google's gemini-2.5-flash. I can help you with:</p>
+                            <ul>
+                                <li><strong>Text Generation:</strong> Answers, translations, creative writing</li>
+                                <li><strong>Image Creation:</strong> Generate stunning visuals from descriptions</li>
+                                <li><strong>Code Assistance:</strong> Programming in any language</li>
+                                <li><strong>Analysis:</strong> Data, images, documents, and more</li>
+                            </ul>
+                            <p>Try saying: <em>"Create an image of a cosmic landscape"</em> or <em>"Explain quantum computing in Malagasy"</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quantum-input">
+                <div class="input-warp">
+                    <textarea 
+                        class="warp-field" 
+                        id="warpInput"
+                        placeholder="Enter your quantum query... (Supports text and image prompts)"
+                        rows="2"
+                    ></textarea>
+                    
+                    <div class="warp-controls">
+                        <button class="warp-button warp-image" id="imageModeBtn" title="Generate Image">
+                            <i class="fas fa-image"></i>
+                        </button>
+                        <button class="warp-button warp-send" id="sendBtn" title="Send Message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="auto-pulse" id="autoDetect">
+                        <i class="fas fa-magic"></i>
+                        <span>Auto-detect: Text Mode</span>
+                    </div>
+                    
+                    <div class="size-quantum" id="sizeSelector" style="display: none;">
+                        <div style="color: var(--text-dust); font-size: 14px; margin-right: 12px;">
+                            <i class="fas fa-expand-alt"></i> Resolution:
+                        </div>
+                        <button class="size-option active" data-size="512x512">512×512</button>
+                        <button class="size-option" data-size="768x768">768×768</button>
+                        <button class="size-option" data-size="1024x1024">1024×1024</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quantumToast"></div>
+
+    <script>
+        // ========== QUANTUM CONFIGURATION ==========
+        // ⚠️ API Key dia any amin'ny Vercel Environment Variables
+        // Tsy apetraka ao amin'ny code ity
+        
+        class QuantumConfig {
+            constructor() {
+                this.GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=API_KEY';
+                this.MAX_TOKENS = 2000;
+                this.TEMPERATURE = 0.8;
+            }
+            
+            getApiKey() {
+                // Triedra amin'ny fomba maro:
+                
+                // 1. Vercel Environment Variables (soa indrindra)
+                if (typeof process !== 'undefined' && process.env && process.env.GEMINI_API_KEY) {
+                    console.log('Using Vercel Environment Variable');
+                    return process.env.GEMINI_API_KEY;
+                }
+                
+                // 2. Window variable (injecté par Vercel)
+                if (window.GEMINI_API_KEY) {
+                    console.log('Using window.GEMINI_API_KEY');
+                    return window.GEMINI_API_KEY;
+                }
+                
+                // 3. URL query parameter (ho an'ny test)
+                const urlParams = new URLSearchParams(window.location.search);
+                const urlKey = urlParams.get('api_key');
+                if (urlKey && urlKey.startsWith('AIza')) {
+                    console.log('Using URL parameter (test only)');
+                    return urlKey;
+                }
+                
+                // 4. localStorage (temporary)
+                const storedKey = localStorage.getItem('GEMINI_API_KEY');
+                if (storedKey && storedKey.startsWith('AIza')) {
+                    console.log('Using localStorage key');
+                    return storedKey;
+                }
+                
+                // 5. Default empty
+                console.warn('No API key found');
+                return '';
+            }
+            
+            checkApiKeyStatus() {
+                const key = this.getApiKey();
+                
+                if (!key) {
+                    return {
+                        valid: false,
+                        message: '❌ API Key not configured',
+                        details: 'Please add GEMINI_API_KEY to Vercel Environment Variables',
+                        type: 'error'
+                    };
+                }
+                
+                if (!key.startsWith('AIza')) {
+                    return {
+                        valid: false,
+                        message: '❌ Invalid API Key format',
+                        details: 'API Key should start with "AIza"',
+                        type: 'error'
+                    };
+                }
+                
+                return {
+                    valid: true,
+                    message: '✅ API Key configured',
+                    details: 'Gemini 1.5 Pro is ready',
+                    type: 'success'
+                };
+            }
+            
+            showConfigModal() {
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    background: rgba(0,0,0,0.95);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    padding: 20px;
+                `;
+                
+                const status = this.checkApiKeyStatus();
+                
+                modal.innerHTML = `
+                    <div style="
+                        background: var(--cosmic-blue);
+                        padding: 40px;
+                        border-radius: 24px;
+                        max-width: 600px;
+                        width: 100%;
+                        border: var(--border-nebula);
+                        box-shadow: var(--shadow-glow);
+                    ">
+                        <h2 style="
+                            color: var(--supernova);
+                            margin-bottom: 24px;
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                        ">
+                            <i class="fas fa-cog"></i>
+                            Quantum Configuration
+                        </h2>
+                        
+                        <div style="
+                            background: ${status.type === 'success' ? 'rgba(6, 214, 160, 0.1)' : 'rgba(239, 71, 111, 0.1)'};
+                            border: 1px solid ${status.type === 'success' ? 'rgba(6, 214, 160, 0.3)' : 'rgba(239, 71, 111, 0.3)'};
+                            padding: 20px;
+                            border-radius: 16px;
+                            margin-bottom: 24px;
+                        ">
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
+                                margin-bottom: 12px;
+                            ">
+                                <i class="fas fa-${status.type === 'success' ? 'check-circle' : 'exclamation-circle'}" 
+                                   style="color: ${status.type === 'success' ? '#06D6A0' : '#EF476F'}; font-size: 24px;">
+                                </i>
+                                <h3 style="margin: 0; color: ${status.type === 'success' ? '#06D6A0' : '#EF476F'}">
+                                    ${status.message}
+                                </h3>
+                            </div>
+                            <p style="color: var(--text-moonlight); margin: 0; font-size: 14px;">
+                                ${status.details}
+                            </p>
+                        </div>
+                        
+                        <div style="background: rgba(0,0,0,0.3); padding: 24px; border-radius: 16px; margin-bottom: 24px;">
+                            <h3 style="color: var(--quantum-teal); margin-bottom: 16px;">
+                                <i class="fas fa-server"></i> Vercel Setup Instructions
+                            </h3>
+                            <ol style="color: var(--text-moonlight); margin-left: 20px; line-height: 1.8;">
+                                <li>Go to your Vercel Dashboard</li>
+                                <li>Select your project → Settings → Environment Variables</li>
+                                <li>Add: <code style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 6px;">GEMINI_API_KEY=AIzaSyD...your_key</code></li>
+                                <li>Redeploy your project</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px;">
+                            <button onclick="checkApiKey()" style="
+                                flex: 1;
+                                background: var(--gradient-secondary);
+                                color: white;
+                                border: none;
+                                padding: 14px;
+                                border-radius: 12px;
+                                cursor: pointer;
+                                font-weight: 600;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 8px;
+                            ">
+                                <i class="fas fa-sync"></i> Check Again
+                            </button>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="
+                                padding: 14px 28px;
+                                background: rgba(255,255,255,0.1);
+                                color: var(--text-moonlight);
+                                border: var(--border-stellar);
+                                border-radius: 12px;
+                                cursor: pointer;
+                                font-weight: 600;
+                            ">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+            }
+        }
+        
+        const QUANTUM_CONFIG = new QuantumConfig();
+        
+        // ========== QUANTUM STATE ==========
+        let quantumMode = 'text';
+        let imageSize = '512x512';
+        let isProcessing = false;
+        let chatHistory = [];
+        
+        // ========== UTILITY FUNCTIONS ==========
+        function quantumToast(message, type = 'info') {
+            const colors = {
+                info: { bg: 'var(--gradient-primary)', icon: 'fa-info-circle' },
+                success: { bg: 'var(--gradient-secondary)', icon: 'fa-check-circle' },
+                warning: { bg: 'var(--gradient-warning)', icon: 'fa-exclamation-triangle' },
+                error: { bg: 'linear-gradient(135deg, #EF476F, #FF6B6B)', icon: 'fa-times-circle' }
+            };
+            
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                background: ${colors[type].bg};
+                color: white;
+                padding: 16px 24px;
+                border-radius: 14px;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                backdrop-filter: blur(10px);
+                animation: slideIn 0.3s ease, quantumFade 0.3s ease 4.7s forwards;
+                max-width: 400px;
+                box-shadow: var(--shadow-nebula);
+                border: var(--border-nebula);
+            `;
+            
+            toast.innerHTML = `
+                <i class="fas ${colors[type].icon}" style="font-size: 18px;"></i>
+                <span style="flex: 1; font-size: 14px;">${escapeHtml(message)}</span>
+                <button onclick="this.parentElement.remove()" style="background: rgba(255,255,255,0.2); border: none; border-radius: 8px; color: white; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            const container = document.getElementById('quantumToast') || (() => {
+                const div = document.createElement('div');
+                div.id = 'quantumToast';
+                div.style.cssText = 'position: fixed; bottom: 30px; right: 30px; z-index: 10000;';
+                document.body.appendChild(div);
+                return div;
+            })();
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentElement) toast.remove();
+            }, 5000);
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function setQuantumMode(mode) {
+            quantumMode = mode;
+            
+            document.querySelectorAll('.mode-quantum').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.mode === mode) btn.classList.add('active');
+            });
+            
+            const sizeSelector = document.getElementById('sizeSelector');
+            if (sizeSelector) {
+                sizeSelector.style.display = mode === 'image' ? 'flex' : 'none';
+            }
+            
+            const autoDetect = document.getElementById('autoDetect');
+            if (autoDetect) {
+                autoDetect.innerHTML = `
+                    <i class="fas fa-magic"></i>
+                    <span>${mode === 'image' ? 'Stellar Image Mode' : 'Quantum Text Mode'}</span>
+                `;
+            }
+            
+            const input = document.getElementById('warpInput');
+            if (input) {
+                input.placeholder = mode === 'image' 
+                    ? 'Describe your cosmic creation... (e.g., "galaxy with purple nebula")'
+                    : 'Enter your quantum query...';
+            }
+        }
+        
+        function detectQuantumMode(text) {
+            const lower = text.toLowerCase();
+            const imageKeywords = [
+                'sary', 'image', 'photo', 'dessine', 'dessiner', 'crée', 'créer',
+                'generate image', 'create picture', 'make a picture', 'visual of',
+                'mamorona sary', 'sary ny', 'sary ho an\'ny'
+            ];
+            
+            return imageKeywords.some(keyword => lower.includes(keyword)) ? 'image' : 'text';
+        }
+        
+        // ========== GEMINI API ==========
+        async function quantumQuery(prompt, mode = 'text') {
+            const apiKey = QUANTUM_CONFIG.getApiKey();
+            
+            if (!apiKey) {
+                throw new Error('Quantum API Key required. Please configure your Gemini API key in Vercel Environment Variables.');
+            }
+            
+            const apiUrl = `${QUANTUM_CONFIG.GEMINI_API_URL}?key=${apiKey}`;
+            
+            let requestBody;
+            
+            if (mode === 'image') {
+                requestBody = {
+                    contents: [{
+                        parts: [{
+                            text: `You are a creative AI that generates detailed image descriptions.
+                            Based on this request: "${prompt}"
+                            
+                            Create a highly detailed, creative description for an image generation AI.
+                            Include: colors, style, mood, composition, lighting, and artistic details.
+                            Make it suitable for DALL-E or Stable Diffusion.
+                            
+                            Return ONLY the image description, nothing else.`
+                        }]
+                    }],
+                    generationConfig: {
+                        temperature: 0.9,
+                        maxOutputTokens: 500
+                    }
+                };
+            } else {
+                requestBody = {
+                    contents: [{
+                        parts: [{
+                            text: `You are NOVA AI, a helpful assistant that speaks Malagasy, French, and English.
+                            Respond in the same language as the user, defaulting to Malagasy.
+                            Be creative, detailed, and helpful.
+                            
+                            User: ${prompt}
+                            NOVA AI:`
+                        }]
+                    }],
+                    generationConfig: {
+                        temperature: QUANTUM_CONFIG.TEMPERATURE,
+                        maxOutputTokens: QUANTUM_CONFIG.MAX_TOKENS,
+                        topP: 0.9,
+                        topK: 40
+                    }
+                };
+            }
+            
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || `Quantum Error: HTTP ${response.status}`);
+            }
+            
+            const data = await response.json();
+            return data.candidates[0]?.content?.parts[0]?.text || 'No quantum response received.';
+        }
+        
+        async function generateQuantumImage(prompt) {
+            const query = encodeURIComponent(prompt);
+            const sizes = {
+                '512x512': 'w=512&h=512&fit=crop',
+                '768x768': 'w=768&h=768&fit=crop',
+                '1024x1024': 'w=1024&h=1024&fit=crop'
+            };
+            
+            const unsplashUrl = `https://source.unsplash.com/featured/?${query}&${sizes[imageSize]}`;
+            
+            return unsplashUrl;
+        }
+        
+        function addQuantumMessage(sender, content, type = 'text', imageUrl = null) {
+            const chatContainer = document.getElementById('galaxyChat');
+            
+            if (sender === 'user' && chatHistory.length === 0) {
+                const welcomeSection = chatContainer.querySelector('.welcome-nebula');
+                if (welcomeSection) {
+                    welcomeSection.style.opacity = '0';
+                    welcomeSection.style.transform = 'translateY(-50px)';
+                    setTimeout(() => welcomeSection.remove(), 300);
+                }
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'quantum-message';
+            
+            const senderConfig = {
+                user: { icon: 'fa-user-astronaut', color: 'var(--light-speed)', name: 'Quantum User' },
+                nova: { icon: 'fa-robot', color: 'var(--gradient-primary)', name: 'NOVA AI' }
+            };
+            
+            const config = senderConfig[sender];
+            
+            let contentHTML = '';
+            
+            if (type === 'image' && imageUrl) {
+                contentHTML = `
+                    <div class="message-bubble">
+                        <div class="message-header">
+                            <div class="message-sender">
+                                <i class="fas ${config.icon}"></i>
+                                ${config.name}
+                                <span style="font-size: 12px; padding: 4px 10px; background: var(--gradient-secondary); border-radius: 12px; margin-left: 10px;">
+                                    <i class="fas fa-image"></i> Stellar Creation
+                                </span>
+                            </div>
+                            <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        </div>
+                        
+                        <div class="message-content">
+                            <p><strong>✨ Quantum Prompt:</strong> ${escapeHtml(content)}</p>
+                            
+                            <div class="stellar-image">
+                                <div class="image-frame">
+                                    <img src="${imageUrl}" 
+                                         class="stellar-preview" 
+                                         alt="Quantum Creation"
+                                         onerror="this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?w=512&h=512&fit=crop'">
+                                    <div class="image-halo"></div>
+                                </div>
+                                
+                                <div class="quantum-controls">
+                                    <button class="control-orb control-download" onclick="downloadQuantumImage('${imageUrl}', 'nova-image-${Date.now()}.jpg')">
+                                        <i class="fas fa-download"></i> Download
+                                    </button>
+                                    <button class="control-orb control-regenerate" onclick="regenerateImage('${escapeHtml(content)}')">
+                                        <i class="fas fa-redo"></i> Regenerate
+                                    </button>
+                                    <button class="control-orb control-enhance" onclick="enhanceImage('${escapeHtml(content)}')">
+                                        <i class="fas fa-magic"></i> Enhance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                contentHTML = `
+                    <div class="message-bubble">
+                        <div class="message-header">
+                            <div class="message-sender">
+                                <i class="fas ${config.icon}"></i>
+                                ${config.name}
+                            </div>
+                            <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                        </div>
+                        <div class="message-content">
+                            ${escapeHtml(content).replace(/\n/g, '<br>')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            messageDiv.innerHTML = `
+                <div class="message-orb" style="background: ${config.color};">
+                    <i class="fas ${config.icon}"></i>
+                </div>
+                ${contentHTML}
+            `;
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            chatHistory.push({
+                sender,
+                content,
+                type,
+                imageUrl,
+                timestamp: new Date().toISOString()
+            });
+            
+            updateStarHistory(content, type);
+        }
+        
+        function updateStarHistory(content, type) {
+            const historyContainer = document.getElementById('starHistory');
+            const truncated = content.length > 30 ? content.substring(0, 30) + '...' : content;
+            
+            const starChat = document.createElement('div');
+            starChat.className = 'star-chat';
+            starChat.innerHTML = `
+                <div class="star-icon" style="background: ${type === 'image' ? 'var(--gradient-secondary)' : 'var(--gradient-primary)'};">
+                    <i class="fas ${type === 'image' ? 'fa-image' : 'fa-comment'}"></i>
+                </div>
+                <div class="star-text">
+                    <div class="star-title">${type === 'image' ? 'Stellar Creation' : 'Quantum Chat'}</div>
+                    <div class="star-preview">${escapeHtml(truncated)}</div>
+                </div>
+                <div class="star-type">${type === 'image' ? 'IMAGE' : 'TEXT'}</div>
+            `;
+            
+            historyContainer.appendChild(starChat);
+        }
+        
+        function downloadQuantumImage(url, filename) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    quantumToast('Cosmic image downloaded!', 'success');
+                })
+                .catch(() => quantumToast('Failed to download image', 'error'));
+        }
+        
+        function regenerateImage(prompt) {
+            document.getElementById('warpInput').value = prompt;
+            setQuantumMode('image');
+            processQuantumQuery();
+        }
+        
+        function enhanceImage(prompt) {
+            const enhanced = prompt + ", highly detailed, 4k, professional photography, stunning visuals";
+            document.getElementById('warpInput').value = enhanced;
+            setQuantumMode('image');
+            processQuantumQuery();
+        }
+        
+        function checkApiKey() {
+            const status = QUANTUM_CONFIG.checkApiKeyStatus();
+            quantumToast(status.message, status.type);
+            
+            if (!status.valid) {
+                setTimeout(() => QUANTUM_CONFIG.showConfigModal(), 1000);
+            }
+        }
+        
+        // ========== MAIN PROCESSING ==========
+        async function processQuantumQuery() {
+            const input = document.getElementById('warpInput');
+            const prompt = input.value.trim();
+            
+            if (!prompt || isProcessing) return;
+            
+            const detectedMode = detectQuantumMode(prompt);
+            if (detectedMode !== quantumMode) {
+                setQuantumMode(detectedMode);
+                quantumToast(`Auto-switched to ${detectedMode === 'image' ? 'Stellar Image Mode' : 'Quantum Text Mode'}`, 'info');
+            }
+            
+            addQuantumMessage('user', prompt, quantumMode);
+            input.value = '';
+            isProcessing = true;
+            
+            try {
+                if (quantumMode === 'image') {
+                    quantumToast('Creating quantum description...', 'info');
+                    const imageDescription = await quantumQuery(prompt, 'image');
+                    
+                    quantumToast('Rendering stellar image...', 'info');
+                    const imageUrl = await generateQuantumImage(imageDescription);
+                    
+                    addQuantumMessage('nova', prompt, 'image', imageUrl);
+                    quantumToast('Cosmic image created!', 'success');
+                    
+                } else {
+                    quantumToast('Processing quantum query...', 'info');
+                    const response = await quantumQuery(prompt, 'text');
+                    addQuantumMessage('nova', response, 'text');
+                    quantumToast('Quantum response received!', 'success');
+                }
+                
+            } catch (error) {
+                console.error('Quantum Error:', error);
+                addQuantumMessage('nova', `❌ **Quantum Error:** ${error.message}\n\nPlease check your API key configuration.`, 'text');
+                quantumToast(`Error: ${error.message}`, 'error');
+                
+                if (error.message.includes('API Key')) {
+                    setTimeout(() => QUANTUM_CONFIG.showConfigModal(), 1000);
+                }
+            } finally {
+                isProcessing = false;
+            }
+        }
+        
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.mode-quantum').forEach(btn => {
+                btn.addEventListener('click', () => setQuantumMode(btn.dataset.mode));
+            });
+            
+            document.getElementById('imageModeBtn').addEventListener('click', () => {
+                setQuantumMode('image');
+                document.getElementById('warpInput').focus();
+            });
+            
+            document.getElementById('sendBtn').addEventListener('click', processQuantumQuery);
+            
+            document.getElementById('warpInput').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    processQuantumQuery();
+                }
+                
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+            });
+            
+            document.getElementById('newChatBtn').addEventListener('click', () => {
+                document.getElementById('galaxyChat').innerHTML = '';
+                chatHistory = [];
+                quantumToast('New quantum session started', 'info');
+            });
+            
+            document.querySelectorAll('.size-option').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    imageSize = this.dataset.size;
+                    quantumToast(`Resolution set to ${imageSize}`, 'info');
+                });
+            });
+            
+            setTimeout(() => {
+                document.getElementById('warpInput').focus();
+            }, 1000);
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100px); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes quantumFade {
+                    to { opacity: 0; transform: translateY(20px); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            setTimeout(() => {
+                const status = QUANTUM_CONFIG.checkApiKeyStatus();
+                if (!status.valid) {
+                    quantumToast(status.message, status.type);
+                    setTimeout(() => QUANTUM_CONFIG.showConfigModal(), 2000);
+                } else {
+                    quantumToast('🚀 NOVA AI Quantum Interface Ready', 'success');
+                }
+            }, 1500);
+        });
+        
+        window.checkApiKey = checkApiKey;
+        window.downloadQuantumImage = downloadQuantumImage;
+        window.regenerateImage = regenerateImage;
+        window.enhanceImage = enhanceImage;
+    </script>
+</body>
+</html>
