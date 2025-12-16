@@ -1086,43 +1086,15 @@
                 this.TEMPERATURE = 0.8;
             }
             
-            getApiKey() {
-                // Triedra amin'ny fomba maro:
-                
-                // 1. Vercel Environment Variables (soa indrindra)
-                if (typeof process !== 'undefined' && process.env && process.env.GEMINI_API_KEY) {
-                    console.log('Using Vercel Environment Variable');
-                    return process.env.GEMINI_API_KEY;
-                }
-                
-                // 2. Window variable (injecté par Vercel)
-                if (window.GEMINI_API_KEY) {
-                    console.log('Using window.GEMINI_API_KEY');
-                    return window.GEMINI_API_KEY;
-                }
-                
-                // 3. URL query parameter (ho an'ny test)
-                const urlParams = new URLSearchParams(window.location.search);
-                const urlKey = urlParams.get('api_key');
-                if (urlKey && urlKey.startsWith('AIza')) {
-                    console.log('Using URL parameter (test only)');
-                    return urlKey;
-                }
-                
-                // 4. localStorage (temporary)
-                const storedKey = localStorage.getItem('GEMINI_API_KEY');
-                if (storedKey && storedKey.startsWith('AIza')) {
-                    console.log('Using localStorage key');
-                    return storedKey;
-                }
-                
-                // 5. Default empty
-                console.warn('No API key found');
-                return '';
-            }
+           fetch('/api/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(payload)
+});
+
             
             checkApiKeyStatus() {
-                const key = this.getApiKey();
+               
                 
                 if (!key) {
                     return {
@@ -1364,7 +1336,7 @@
         
         // ========== GEMINI API ==========
         async function quantumQuery(prompt, mode = 'text') {
-            const apiKey = QUANTUM_CONFIG.getApiKey();
+         
             
             if (!apiKey) {
                 throw new Error('Quantum API Key required. Please configure your Gemini API key in Vercel Environment Variables.');
